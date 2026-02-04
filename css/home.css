@@ -16,6 +16,9 @@
         font-weight: bold;
     }
 
+    .hero-section, .about-section, .tokenomics-section, .roadmap-section, .footer-section {
+        height: auto;
+    }
 
 /* ---- NAVIGATION ---- */
     .navbar {
