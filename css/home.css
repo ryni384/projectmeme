@@ -1,0 +1,655 @@
+*   {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: Helvetica, Sans-serif;
+        font-weight: bold;
+    }
+
+
+/* ---- NAVIGATION ---- */
+    .navbar {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        }
+
+    .nav-container {
+        max-width: 1100px;
+        max-height: 60px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0 20px;
+    }
+    
+/* ----Logo Link Wrapper ---- */
+    .logo-link {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        text-decoration: none;
+        flex-shrink: 0; /* Prevents menu from squishing the logo */
+    }
+
+    .logo-img {
+        max-height: auto;
+        width: auto;
+        display: block;
+        object-fit: fill;
+    }
+
+/* ---- Desktop Nav Links ---- */
+    .nav-links {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-links a:hover,
+    .navbar a, .dropbtn {
+        color: white;
+        padding: 18px 16px;
+        text-decoration: none;
+        font-size: 16px;
+        background: none;
+        border: none;
+        font-family: inherit;
+        font-weight: bold;
+        cursor: pointer;
+        display: block;
+    }
+
+/* ---- This ensures the logo link specifically has no background change ---- */
+    .logo-link:hover {
+        background-color: transparent !important;
+        cursor: pointer; /* Optional: makes the mouse stay a pointer or arrow */
+    }
+
+    .navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: rgba(187, 75, 0, 0.301);
+    }
+
+/* ---- DROPDOWN (Desktop) ---- */
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        min-width: 200px;
+        z-index: 1005;
+        top: 100%; /* Align to bottom of navbar */
+        }
+
+    .dropdown-content a {
+        color: rgb(255, 255, 255);
+        text-align: left;
+        padding: 12px 16px;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 15px; /* Space between icons */
+        align-items: center;
+    }
+
+    .social-icons a {
+        color: #fff; /* Change to your theme color */
+        font-size: 1.2rem;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+/* Hover effects make the UI feel responsive */
+    .social-icons a:hover {
+        transform: scale(1.1);
+        padding: 16px;
+    }
+
+
+ /* ---- MULTIPLE SECTIONS ---- */
+    .hero-section, .about-section, .tokenomics-section, .roadmap-section  {
+        scroll-snap-align: start;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+    }
+
+    h1, h2, h3, p   {
+        color: white;
+    }
+
+    .about-container, .tokenomics-container, .roadmap-container {
+        width: 100%;
+        height: 100%;
+        display: flex;         /* Creates the side-by-side columns */
+        flex-direction: row; /* Desktop: Side-by-side */
+        flex-wrap: wrap;
+        align-items: center;   /* Vertically centers text */
+        padding: 20px;         /* Keeps text away from image edges */
+        background: black; /* Optional: darkens image for readability */
+    }
+
+/* ---- HERO ----*/
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* This now pushes the wrapper to the bottom */
+        align-items: center;
+        line-height: 1.6;
+        height: 100%;
+    }
+
+    .hero-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    .hero-content {
+        max-width: 1000px;
+        flex-grow: 0.5;
+        line-height: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .hero-content h1 {
+        font-size: 70px;        /* Large and bold for Desktop */
+        font-family: system-ui, comic 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin-bottom: 20px;   /* Space between headline and paragraph */
+        line-height: 1.2;      /* Prevents lines from overlapping */
+        text-align: center;
+        text-shadow: 2px 2px 5px black;
+    }
+                    
+    .hero-content p {
+        font-size: 18px;        /* Easy to read size */
+        line-height: 1.1;      /* Adds "breathing room" between lines of text */
+        max-width: 800px;      /* Stops the text from stretching too wide */
+        margin: 5px auto;        /* Keeps the paragraph centered */
+        text-align: center;        
+        text-shadow: 2px 2px 5px black;        
+    }
+
+    .bottom-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px; /* <--- THIS controls the exact distance you circled! */
+    }
+
+    .sub-hero {
+        text-align: center;
+        max-width: 1000px;
+        flex-grow: 0.5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 20px;
+        text-shadow: 2px 2px 5px black;
+    }
+
+    .hero-buttons a {
+        display: flex;
+        gap: 40px;
+        font-size: 20px;
+        padding: 10px 20px;       /* Adds space inside the button */
+        display: block;    /* Allows padding to work correctly*/
+        text-decoration: none;
+        text-align: center;
+        color: white;
+        text-shadow: 2px 2px 5px black;
+    }
+
+    .hero-buttons a:hover {
+        color: 	#A9A9A9;           /* Changes color when mouse is over it */
+    }
+
+    .btn-primary {
+        border-style: ridge;
+        border-radius: 15px;
+    }
+
+/* ---- ABOUT ---- */    
+     .about-img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .about-column1 {
+        flex: 50%;
+        padding: 20px;
+        text-align: center;
+        max-width: 1000px;
+        flex-grow: 0.5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+            
+    .about-column2 {
+        flex: 50%;
+        padding: 20px;
+        text-align: center;
+        max-width: 1000px;
+        flex-grow: 0.5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .about-column2 h1 {
+        margin-bottom: 20px;   /* Space between headline and paragraph */
+        line-height: 1.2;      /* Prevents lines from overlapping */
+        text-align: center;
+        padding: 20px;
+    }
+
+    .about-column2 p {
+        line-height: 1.6;      /* Adds "breathing room" between lines of text */
+        max-width: 800px;      /* Stops the text from stretching too wide */
+        margin: 5px auto;        /* Keeps the paragraph centered */
+        text-align: justify;
+        padding: 20px;
+    }
+
+/* ----TOKENOMICS ---- */    
+    .tokenomics-img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .tokenomics-column1 {
+        flex: 50%;
+        padding: 20px;
+        text-align: center;
+        max-width: 1000px;
+        flex-grow: 0.5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
+            
+    .tokenomics-column2 {
+        flex: 50%;
+        padding: 20px;
+        max-width: 1000px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .tokenomics-column1 h1 {
+        line-height: 1.2;      /* Prevents lines from overlapping */
+        text-align: center;
+        padding: 20px;
+    }
+            
+    .tokenomics-column1 h3 {
+        line-height: 1.2;      /* Prevents lines from overlapping */
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .tokenomics-column1 p { 
+        line-height: 1.6;      /* Adds "breathing room" between lines of text */
+        max-width: 1000px;      /* Stops the text from stretching too wide */
+        margin: 5px auto;        /* Keeps the paragraph centered */
+        text-align: justify;
+        padding: 20px;
+        margin-top: 0;
+    }            
+
+/* ---- ROADMAP ---- */        
+    .roadmap-img {
+        width: 100%;
+        height: auto;
+        display: block;      
+    }
+
+    .roadmap-column1 {
+        flex: 50%;
+        display: flex;
+    }
+
+    .roadmap-column2 {
+        flex: 50%;
+        padding: 20px;
+        max-width: 1000px;
+        flex-grow: 0.5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .roadmap-column2 h1 {
+        margin-bottom: 20px;   /* Space between headline and paragraph */
+        line-height: 1.2;      /* Prevents lines from overlapping */
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .roadmap-column2 h3 {
+        text-align: center;
+        margin-bottom: 0;
+    }
+    
+    .roadmap-column2 p {
+        line-height: 1.2;      /* Adds "breathing room" between lines of text */
+        max-width: 1000px;      /* Stops the text from stretching too wide */
+        text-align: justify;
+        padding: 20px;
+        margin-top: 0;
+    }         
+
+/* ---- FOOTER ---- */    
+    .footer-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* This now pushes the wrapper to the bottom */
+        align-items: center;
+        height: 40vh;
+        width: 100%;
+        scroll-snap-align: start;
+    }      
+
+    .footer-container  {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* This now pushes the wrapper to the bottom */
+        align-items: center;
+        line-height: 1.2;
+        height: 100%;
+    }
+
+    .footer-content1 {
+        align-items: center;
+    }
+
+    .footer-img {
+        width: 100%;
+        display: block;        
+    }
+    
+    .footer-content2 {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+        padding: 10px;
+    }
+            
+    .footer-content2 p  {
+        color: black;
+        padding-bottom: 5px;
+        font-size: 12px;
+    }
+            
+    .footer-button a {
+        width: auto; 
+        font-size: 12px;
+        padding: 5px 10px;       /* Adds space inside the button */
+        text-decoration: none;
+        text-align: center;
+        color: black;
+        border: ridge;
+        border-radius: 15px;
+    }
+
+    .footer-button a:hover {
+        color: 	#c5c5c5;           /* Changes color when mouse is over it */
+        text-decoration: none;    /* Ensures underline stays gone */
+        background-color: rgb(223, 120, 24);
+    }
+                        
+/* ========================================================================================================================================== */
+                                                    /* ---- MOBILE SETUP ---- */
+/* ========================================================================================================================================== */
+/* ---- RESPONSIVE ADJUSTMENTS ---- */
+
+/* 1. Hide both the checkbox AND the hamburger icon on Desktop by default */
+    #menu-toggle, .hamburger {
+         display: none;
+    }
+
+/* 2. Your existing Media Query */
+        @media (max-width: 800px) {
+
+/* 3. SHOW the hamburger icon only when the screen is small */
+    .hamburger {
+        display: block; /* Changed from none to block */
+        color: white;
+        cursor: pointer;
+        z-index: 1002;
+        font-size: 30px; /* Optional: adjust size of the 3 lines */
+    }
+    .navbar {
+        background-color: #222222;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+/* ---- MOBILE SIDEBAR SPECIFIC ---- */
+/*  1. The Sidebar Container */
+    .nav-links {
+        position: fixed;      /* Stays in place when scrolling */
+        top: 0;
+        right: -100%;         /* Starts completely off-screen to the right */
+        width: 260px;         /* Width of the sidebar */
+        height: 100vh;        /* Full screen height */
+        background-color: #333;
+        display: flex;
+        flex-direction: column; /* Stack links vertically */
+        padding-top: 80px;    /* Space for the logo/close area */
+        transition: 0.4s ease; /* Smooth sliding animation */
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+        z-index: 1001;
+    }
+
+/*  2. The Trigger (When the Checkbox is clicked) */
+    #menu-toggle:checked ~ .nav-links {
+        right: 0;             /* Slides the menu into view */
+    }
+
+/*  3. Sidebar Links */
+    .nav-links a, .dropbtn {
+        display: block;       /* 1. Forces the link to be a 'box' that respects padding */
+        width: 100%;          /* 2. Makes the box fill the width of the sidebar */
+        box-sizing: border-box; /* 3. Keeps padding/borders INSIDE the 260px width */
+        text-align: left;
+        padding: 15px 25px;   /* This will now push the text away from the edge */
+        margin: 0;            /* Removes any desktop spacing */
+        border-bottom: 1px solid #444; /* The 'underline' now stays inside the bar */
+        text-decoration: none; /* Removes the default blue underline if it exists */
+    }
+
+/* ---- Reset the dropdown container to prevent it from shifting ---- */
+        .dropdown {
+        width: 100%;
+        display: block;
+    }
+
+/* ---- HERO ----*/   
+    .hero-container {
+        flex: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* This now pushes the wrapper to the bottom */
+        align-items: center;
+        line-height: 1;
+        height: 100%;
+    }
+            
+    .hero-content {
+        max-width: 700px;
+        flex-grow: 0.5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+                
+    .hero-content h1 {
+        font-size: 40px;
+        margin-bottom: 5px;   /* Space between headline and paragraph */
+        line-height: 1.2;      /* Prevents lines from overlapping */
+        text-align: center; 
+    }
+                    
+    .hero-content p {
+        font-size: 16px;        /* Easy to read size */
+        line-height: 1.5;      /* Adds "breathing room" between lines of text */
+        margin: 5px auto;        /* Keeps the paragraph centered */
+        text-align: center;
+        padding: 25px;
+        height: 150px;
+    }
+
+    .about-container, .tokenomics-container, .roadmap-container {
+        flex: 100%;        /* Mobile: Each takes full width */
+        display: grid;
+        grid-template-columns: 1fr; /* Single column layout for mobile */
+        grid-template-rows: auto;
+        justify-content: center;
+        height:100%;
+    }
+            
+    .about-column2 h1 {
+        font-size: 30px;        /* Large and bold for Desktop */
+        margin-top: 0;
+        margin-bottom: 0;   /* Space between headline and paragraph */
+        line-height: 1.2;      /* Prevents lines from overlapping */
+        text-align: center;
+        padding: 20px;
+    }
+
+    .about-column2 p {
+        font-size: 12px;        /* Easy to read size */
+        line-height: 1.6;      /* Adds "breathing room" between lines of text */
+        max-width: 800px;      /* Stops the text from stretching too wide */
+        margin-top: 0;        /* Keeps the paragraph centered */
+        text-align: justify;
+        padding: 10px;
+        height: 120px;
+    }
+            
+    .tokenomics-column1 { 
+        order: 2; 
+    }
+            
+    .tokenomics-column2 {
+        order: 1; 
+    }
+            
+    .tokenomics-column1 h1 {
+        font-size: 30px;        /* Large and bold for Desktop */
+        text-align: center;
+        padding: 20px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    
+    .tokenomics-column1 h3 {
+        font-size: 16px
+    }
+            
+    .tokenomics-column1 p {
+        font-size: 12px;        /* Easy to read size */
+        line-height: 1.2;
+        max-width: 800px;      /* Stops the text from stretching too wide */       
+        text-align: justify;
+        padding: 5px;         
+    }
+                    
+    .roadmap-column2 h1 {
+        font-size: 30px;        /* Large and bold for Desktop */
+        margin-top: 0;
+        margin-bottom: 5px;   /* Space between headline and paragraph */
+        line-height: 1.2;      /* Prevents lines from overlapping */
+        text-align: center;
+        padding: 10px;
+    }
+
+    .roadmap-column2 h3 {
+        font-size: 16px;
+        margin-top: 5px;
+    }
+
+    .roadmap-column2 p {
+        font-size: 12px;        /* Easy to read size */
+        line-height: 1.6;      /* Adds "breathing room" between lines of text */
+        max-width: 800px;      /* Stops the text from stretching too wide */
+        margin: 5px auto;        /* Keeps the paragraph centered */
+        text-align: justify;
+        padding: 0;
+        height: 100%;
+    }
+            
+    .footer-container  {
+        flex: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* This now pushes the wrapper to the bottom */
+        align-items: center;
+        line-height: 1.2;
+        height: 100%;
+    }
+            
+    .footer-content1 {
+        display: flex; 
+        justify-content: center;
+        padding-top: 0;
+        margin-bottom: 30px;
+    }
+
+    .footer-content2 p {
+        font-size: 10px;   
+        text-align: center;
+        padding: 10px;         
+        justify-content: center;
+    }
+}
