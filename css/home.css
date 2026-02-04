@@ -683,7 +683,6 @@
     /* 2. Fix the overlapping sections */
     .hero-section {
         height: auto !important;      /* Forces sections to grow with content */
-        min-height: 100vh;
         padding-top: 80px;            /* Gives space for the absolute nav */
     }
 
@@ -694,7 +693,6 @@
 
     .about-section, .tokenomics-section, .roadmap-section {
         height: auto !important;      /* Forces sections to grow with content */
-        min-height: 100vh;
         display: block !important;    /* Switches from Flex to Block for easier stacking */
     }
 
