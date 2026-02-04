@@ -3,7 +3,6 @@
     }
 
     html {
-        scroll-snap-type: y mandatory;
         scroll-behavior: smooth;
     }
 
@@ -16,9 +15,6 @@
         font-weight: bold;
     }
 
-    .hero-section, .about-section, .tokenomics-section, .roadmap-section, .footer-section {
-        height: auto;
-    }
 
 /* ---- NAVIGATION ---- */
     .navbar {
@@ -512,12 +508,29 @@
     }
 
 /* ---- Reset the dropdown container to prevent it from shifting ---- */
-        .dropdown {
+    .dropdown {
         width: 100%;
         display: block;
     }
 
-/* ---- HERO ----*/   
+     .about-section, .tokenomics-section, .roadmap-section, .footer-section  {
+        flex: 100%
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        width: 100%;
+    }
+
+/* ---- HERO ----*/  
+    .hero-section {
+        flex: 100%
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+    }
     .hero-container {
         flex: 100%;
         display: flex;
@@ -525,7 +538,7 @@
         justify-content: center; /* This now pushes the wrapper to the bottom */
         align-items: center;
         line-height: 1;
-        height: 100%;
+        height: auto;
     }
             
     .hero-content {
@@ -558,7 +571,7 @@
         grid-template-columns: 1fr; /* Single column layout for mobile */
         grid-template-rows: auto;
         justify-content: center;
-        height:100%;
+        height:auto;
     }
             
     .about-column2 h1 {
@@ -577,7 +590,7 @@
         margin-top: 0;        /* Keeps the paragraph centered */
         text-align: justify;
         padding: 10px;
-        height: 120px;
+        height: auto;
     }
             
     .tokenomics-column1 { 
@@ -654,5 +667,69 @@
         text-align: center;
         padding: 10px;         
         justify-content: center;
+    }
+}
+
+/* ======================================================================================================================================*/
+                                            /* --- THE LANDSCAPE REPAIR PATCH --- */
+/* ======================================================================================================================================*/
+
+@media (max-height: 500px) and (orientation: landscape) {
+    /* 1. Stop the navbar from eating the short screen */
+    .navbar {
+        position: absolute !important; 
+    }
+
+    /* 2. Fix the overlapping sections */
+    .hero-section {
+        height: auto !important;      /* Forces sections to grow with content */
+        min-height: 100vh;
+        padding-top: 80px;            /* Gives space for the absolute nav */
+    }
+
+    .footer-section {
+        height: auto !important;      /* Forces sections to grow with content */
+        padding-top: 0px;            /* Gives space for the absolute nav */
+    }
+
+    .about-section, .tokenomics-section, .roadmap-section {
+        height: auto !important;      /* Forces sections to grow with content */
+        min-height: 100vh;
+        display: block !important;    /* Switches from Flex to Block for easier stacking */
+    }
+
+    /* 3. Fix the containers that were squashing text side-by-side */
+    .about-container, .tokenomics-container, .roadmap-container {
+        display: grid !important;    /* Stack image and text vertically */
+        height: auto !important;
+    }
+
+    /* 4. Shrink the massive headlines for short screens */
+    .hero-content h1, .about-column2 h1, .tokenomics-column1 h1, .roadmap-column2 h1 {
+        font-size: 32px !important;
+        margin-top: 20px;
+    }
+
+    /* 5. Fix the 150px height limit you had on paragraphs */
+    .hero-content p, .about-column2 p, .tokenomics-column1 p, .roadmap-column2 p {
+        height: auto !important; 
+        max-width: 90%;
+        margin: 10px auto;
+    }
+
+    /* 6. Prevent images from being giant and pushing content miles away */
+    .hero-img, .about-img, .tokenomics-img, .roadmap-img {
+        max-width: auto !important;
+        height: auto !important;
+        margin: 0 auto !important;
+        display: block;
+    }
+
+    .tokenomics-column1 { 
+        order: 2; 
+    }
+            
+    .tokenomics-column2 {
+        order: 1; 
     }
 }
