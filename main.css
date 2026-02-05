@@ -718,7 +718,8 @@
     /* 6. Prevent images from being giant and pushing content miles away */
     .hero-img, .about-img, .tokenomics-img, .roadmap-img {
         max-width: auto !important;
-        height: auto !important;
+        min-height: 100vh;    
+        height: 105vh !important;
         margin: 0 auto !important;
         display: block;
     }
